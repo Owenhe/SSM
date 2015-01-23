@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dkry.mapper.VideoInfoMapper">
+
+	<insert id="insertVideoInfo" parameterType="videoInfo">
+	 <![CDATA[
+		insert into dkry_video_info(video_name,time_of_length,pic_url,release_time,flash_url,classification) 
+		values(#{video_name},#{time_of_length},#{pic_url},#{release_time},#{flash_url},#{classification})
+		]]>
+	</insert>
+	<select id="selectVideoInfoByUrl" resultType="videoInfo">
+		select * from dkry_video_info
+		where flash_url=#{flash_url}
+	</select>
+	<select id="selectAllVideoInfo" resultType="videoInfo">
+		select * from dkry_video_info  order by video_name asc
+	</select>
+	<select id="selectVideoInfoById" resultType="videoInfo" parameterType="int">
+		select * from dkry_video_info where id=#{id}
+	</select>
+
+</mapper>

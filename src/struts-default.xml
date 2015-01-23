@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 指定默认编码集 ，作用于HttpServletRequest的setCharacterEncoding（）和freemarker，vilocity的输出 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 当struts配置文件修改时是否自动加载 -->
+	<constant name="struts.configuration.xmlreload" value="true" />
+	<!-- 开发模式下打印详细的错误信息 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<include file="struts-plugin.xml"></include>
+	<package name="ajax-json-plugin" extends="json-default">
+		<!-- <action name="getData" class="com.ymhd.action.ReportAction"
+			method="getData">
+			<result type="json">
+				此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端
+				<param name="root">displist</param>
+			</result>
+		</action> -->
+
+		<action name="init" class="com.dkry.action.ReportAction"
+			method="init">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="detail" class="com.dkry.action.ReportAction"
+			method="detail">
+			<result name="success">detail.jsp</result>
+		</action>
+		 
+		
+	</package>
+</struts>    
